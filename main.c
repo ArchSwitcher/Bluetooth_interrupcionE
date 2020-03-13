@@ -40,7 +40,7 @@ void main(void) {
             USART_SendString("Envie 1 para cambio de estado");     // Envia dos veces esto 
                                                      //por la funcion USART_ReceveiveChar()
         }
-        __delay_ms(700);
+        __delay_ms(100);
         
     }
 }
@@ -59,9 +59,9 @@ void __interrupt(low_priority) Aqui_van_las_interrupciones(void){ //MODIFICAR ES
     
     if (INTCONbits.INT0F){
         PORTDbits.RD0 = ~PORTDbits.RD0;
-        INTCONbits.INT0F = 0;                       //Reinicio de la bandera de RB0
         USART_SendString("INTERRUPCION");             //Enviara cuando entre a la 
                                                         //INTERRUPCION
+        INTCONbits.INT0F = 0;                       //Reinicio de la bandera de RB0
     }
 
 }
